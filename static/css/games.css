@@ -6,6 +6,8 @@
   --theme-background: #1a1b2e;
   --theme-neon: #00ff9d;
   --theme-neon-glow: 0 0 10px #00ff9d;
+  --theme-cyberpunk-pink: #ff00ff;
+  --theme-cyberpunk-blue: #00ffff;
 }
 
 body {
@@ -14,39 +16,90 @@ body {
   min-height: 100vh;
 }
 
-/* Splash screen */
+/* Splash screen with enhanced effects */
 .splash-screen {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('/static/images/metaverse-bg.webp') center/cover;
+  background: url('/static/images/article23-1.webp') center/cover;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: fadeOut 2s ease-in-out forwards;
-  animation-delay: 2s;
+  animation: fadeOut 3s ease-in-out forwards;
+  animation-delay: 4s;
 }
 
 .splash-content {
   text-align: center;
   color: white;
-  text-shadow: 0 0 20px rgba(0, 255, 157, 0.8);
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  border: 2px solid var(--theme-cyberpunk-blue);
+  box-shadow: 
+    0 0 20px var(--theme-cyberpunk-blue),
+    inset 0 0 20px var(--theme-cyberpunk-pink);
 }
 
 .splash-title {
   font-size: 3.5rem;
   margin-bottom: 1rem;
-  animation: glowText 2s infinite;
+  animation: cyberpunkText 2s infinite;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.splash-content .lead {
+  font-size: 1.5rem;
+  animation: glowText 3s infinite;
+  opacity: 0.9;
+}
+
+/* Enhanced animations */
+@keyframes cyberpunkText {
+  0%, 100% { 
+    color: white;
+    text-shadow: 
+      0 0 10px var(--theme-cyberpunk-blue),
+      0 0 20px var(--theme-cyberpunk-blue),
+      0 0 40px var(--theme-cyberpunk-pink);
+  }
+  50% { 
+    color: var(--theme-cyberpunk-blue);
+    text-shadow: 
+      0 0 20px var(--theme-cyberpunk-pink),
+      0 0 40px var(--theme-neon),
+      0 0 80px var(--theme-cyberpunk-blue);
+  }
+}
+
+@keyframes glowText {
+  0%, 100% { 
+    text-shadow: 0 0 10px var(--theme-neon);
+    opacity: 0.8;
+  }
+  50% { 
+    text-shadow: 
+      0 0 20px var(--theme-neon),
+      0 0 30px var(--theme-cyberpunk-pink);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
 }
 
 /* Hero section */
 .hero-section {
   position: relative;
   height: 400px;
-  background: url('/static/images/metaverse-bg.webp') center/cover;
+  background: url('/static/images/article23-1.webp') center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -159,17 +212,6 @@ footer.section {
   padding: 3rem 0;
   margin-top: 4rem;
   border-top: 1px solid rgba(69, 183, 209, 0.2);
-}
-
-/* Animations */
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; visibility: hidden; }
-}
-
-@keyframes glowText {
-  0%, 100% { text-shadow: 0 0 10px var(--theme-neon); }
-  50% { text-shadow: 0 0 20px var(--theme-neon), 0 0 30px var(--theme-neon); }
 }
 
 /* Grid layout */
