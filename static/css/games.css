@@ -1,0 +1,43 @@
+.game-container {
+  background-color: var(--bs-dark);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+canvas {
+  background-color: var(--bs-dark);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-spin {
+  background-color: var(--bs-primary);
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 24px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.btn-spin:hover {
+  transform: scale(1.05);
+}
+
+.btn-spin:disabled {
+  background-color: var(--bs-secondary);
+  transform: none;
+}
+
+.result-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.score-display {
+  font-size: 1.8rem;
+  color: var(--bs-warning);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

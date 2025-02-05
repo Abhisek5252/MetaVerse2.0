@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h2>💰 Your Wallet</h2>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card bg-primary text-white mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Balance</h5>
+                        <p class="display-4">{{ user.coins }}</p>
+                        <p class="card-text">Metarush Coins</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-info text-white mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Tokens</h5>
+                        <p class="display-4">{{ user.tokens }}</p>
+                        <p class="card-text">Special Tokens</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h3>🎮 Play Games to Earn More!</h3>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <a href="{{ url_for('game') }}" class="btn btn-primary btn-lg w-100 mb-3">
+                    🎡 Spin Wheel
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="{{ url_for('coinrain') }}" class="btn btn-info btn-lg w-100 mb-3">
+                    🌧️ Coin Rain
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
