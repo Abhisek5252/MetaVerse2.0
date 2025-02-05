@@ -414,3 +414,42 @@ footer.section {
   gap: 1.5rem;
   margin: 2rem 0;
 }
+
+/* Section card styles */
+.section-card {
+    background: var(--theme-card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    height: 100%;
+    border: 1px solid var(--theme-border);
+    transition: all 0.3s ease;
+}
+
+.section-card:hover {
+    border-color: var(--theme-neon);
+    box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
+}
+
+.section-card h4 {
+    color: var(--theme-accent);
+    text-shadow: 0 0 5px rgba(69, 183, 209, 0.5);
+}
+
+.section-card .nav-link {
+    color: #ffffff;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+}
+
+.section-card .nav-link:hover {
+    opacity: 1;
+    color: var(--theme-neon);
+    transform: translateX(5px);
+}
+
+.bottom-sections {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--theme-border);
+}

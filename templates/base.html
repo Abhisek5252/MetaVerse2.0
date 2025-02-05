@@ -55,6 +55,42 @@
         {% endwith %}
 
         {% block content %}{% endblock %}
+
+        <!-- Bottom Sections -->
+        <div class="bottom-sections mt-5">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="section-card">
+                        <h4 class="fw-bolder mb-3">🎯 Quick Links</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="{{ url_for('game') }}" class="nav-link">Spin Wheel</a></li>
+                            <li><a href="{{ url_for('coinrain') }}" class="nav-link">Coin Rain</a></li>
+                            <li><a href="{{ url_for('wallet') }}" class="nav-link">My Wallet</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="section-card">
+                        <h4 class="fw-bolder mb-3">💎 Features</h4>
+                        <ul class="list-unstyled">
+                            <li class="nav-link">Daily Rewards</li>
+                            <li class="nav-link">Mini Games</li>
+                            <li class="nav-link">Airdrops</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="section-card">
+                        <h4 class="fw-bolder mb-3">🌟 Community</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="{{ url_for('leaderboard') }}" class="nav-link">Leaderboard</a></li>
+                            <li class="nav-link">Daily Challenges</li>
+                            <li class="nav-link">Special Events</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap Bundle with Popper -->

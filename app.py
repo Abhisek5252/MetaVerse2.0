@@ -200,5 +200,34 @@ def claim_coinrain_reward():
 
     return jsonify({'success': False, 'message': 'No coins collected.'})
 
+@app.route('/convert_coins', methods=['POST'])
+def convert_coins():
+    user = get_or_create_user()
+    data = request.get_json()
+    coins_to_convert = data.get('coins', 0)
+
+    if coins_to_convert < 100:
+        return jsonify({
+            'success': False,
+            'message': 'Minimum conversion amount is 100 coins'
+        })
+
+    if user.coins < coins_to_convert:
+        return jsonify({
+            'success': False,
+            'message': 'Insufficient coins balance'
+        })
+
+    tokens_to_receive = coins_to_convert // 100
+    user.coins -= coins_to_convert
+    user.tokens += tokens_to_receive
+
+    db.session.commit()
+
+    return jsonify({
+        'success': True,
+        'message': f'Successfully converted {coins_to_convert:,} coins to {tokens_to_receive:,} tokens!'
+    })
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

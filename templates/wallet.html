@@ -3,13 +3,13 @@
 {% block content %}
 <div class="card">
     <div class="card-body">
-        <h2>💰 Your Wallet</h2>
+        <h2 class="fw-bolder display-5">💰 Your Wallet</h2>
         <div class="row mt-4">
             <div class="col-md-6">
                 <div class="card bg-primary text-white mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Current Balance</h5>
-                        <p class="display-4">{{ user.coins }}</p>
+                        <h5 class="card-title fw-bold">Current Balance</h5>
+                        <p class="display-4 fw-bold">{{ user.coins }}</p>
                         <p class="card-text">Metarush Coins</p>
                     </div>
                 </div>
@@ -17,9 +17,9 @@
             <div class="col-md-6">
                 <div class="card bg-info text-white mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Tokens</h5>
-                        <p class="display-4">{{ user.tokens }}</p>
-                        <p class="card-text">Special Tokens</p>
+                        <h5 class="card-title fw-bold">Tokens</h5>
+                        <p class="display-4 fw-bold">{{ user.tokens }}</p>
+                        <p class="card-text">MetaVerse Tokens</p>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,31 @@
 
 <div class="card mt-4">
     <div class="card-body">
-        <h3>🎮 Play Games to Earn More!</h3>
+        <h3 class="fw-bolder">💱 Convert Coins to Tokens</h3>
+        <div class="conversion-info alert alert-info mt-3">
+            <p class="mb-0">Exchange Rate: 100 Coins = 1 MetaVerse Token</p>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="coinAmount" class="fw-bold mb-2">Coins to Convert</label>
+                    <input type="number" class="form-control" id="coinAmount" min="100" step="100" placeholder="Enter amount of coins">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="fw-bold mb-2">You'll Receive</label>
+                    <div id="tokenAmount" class="form-control bg-light">0 Tokens</div>
+                </div>
+            </div>
+        </div>
+        <button id="convertButton" class="btn btn-primary mt-3">Convert Coins to Tokens</button>
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h3 class="fw-bolder">🎮 Play Games to Earn More!</h3>
         <div class="row mt-3">
             <div class="col-md-6">
                 <a href="{{ url_for('game') }}" class="btn btn-primary btn-lg w-100 mb-3">
@@ -44,4 +68,36 @@
         </div>
     </div>
 </div>
+
+<script>
+document.getElementById('coinAmount').addEventListener('input', function() {
+    const coins = parseInt(this.value) || 0;
+    const tokens = Math.floor(coins / 100);
+    document.getElementById('tokenAmount').textContent = tokens + ' Tokens';
+});
+
+document.getElementById('convertButton').addEventListener('click', async function() {
+    const coins = parseInt(document.getElementById('coinAmount').value) || 0;
+    if (coins < 100) {
+        alert('Minimum conversion amount is 100 coins');
+        return;
+    }
+
+    const response = await fetch('/convert_coins', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ coins: coins })
+    });
+
+    const result = await response.json();
+    if (result.success) {
+        alert(result.message);
+        window.location.reload();
+    } else {
+        alert(result.message);
+    }
+});
+</script>
 {% endblock %}
