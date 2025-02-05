@@ -1,55 +1,54 @@
 {% extends "base.html" %}
 
+{% block hero %}
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="display-4">Welcome to MetaVerse Games</h1>
+        <p class="lead">Play, Earn, and Compete in our Virtual Universe</p>
+    </div>
+</div>
+{% endblock %}
+
 {% block content %}
-<div class="row">
-    <div class="col-md-6">
-        <div class="card mb-4">
-            <div class="card-body">
-                <h2>🎮 Daily Games</h2>
-                <div class="d-grid gap-3">
-                    <a href="{{ url_for('game') }}" class="btn btn-primary">
-                        🎡 Spin Wheel
-                    </a>
-                    <a href="{{ url_for('coinrain') }}" class="btn btn-info">
-                        🌧️ Coin Rain Challenge
-                    </a>
-                </div>
-            </div>
+<div class="games-grid">
+    <div class="game-card">
+        <h2>🎮 Daily Games</h2>
+        <div class="d-grid gap-3">
+            <a href="{{ url_for('game') }}" class="btn btn-game">
+                🎡 Spin Wheel
+            </a>
+            <a href="{{ url_for('coinrain') }}" class="btn btn-game">
+                🌧️ Coin Rain Challenge
+            </a>
         </div>
     </div>
-    
-    <div class="col-md-6">
-        <div class="card mb-4">
-            <div class="card-body">
-                <h2>💰 Your Wallet</h2>
-                <div class="text-center mb-3">
-                    <h3>{{ user.coins }} coins</h3>
-                </div>
-                
-                {% if can_claim %}
-                <div class="d-grid">
-                    <a href="{{ url_for('claim_daily') }}" class="btn btn-success">
-                        🎁 Claim Daily Reward
-                    </a>
-                </div>
-                {% else %}
-                <div class="text-center">
-                    <p>⏰ Next reward in: {{ time_remaining }}</p>
-                </div>
-                {% endif %}
-            </div>
+
+    <div class="game-card">
+        <h2>💰 Your Wallet</h2>
+        <div class="text-center mb-3">
+            <h3>{{ user.coins }} coins</h3>
         </div>
-        
-        <div class="card">
-            <div class="card-body">
-                <h2>🎯 Airdrop</h2>
-                <p>Current pool: {{ airdrop_pool }} coins</p>
-                <div class="d-grid">
-                    <a href="{{ url_for('airdrop') }}" class="btn btn-warning">
-                        🪂 Check Airdrops
-                    </a>
-                </div>
-            </div>
+
+        {% if can_claim %}
+        <div class="d-grid">
+            <a href="{{ url_for('claim_daily') }}" class="btn btn-game">
+                🎁 Claim Daily Reward
+            </a>
+        </div>
+        {% else %}
+        <div class="text-center">
+            <p>⏰ Next reward in: {{ time_remaining }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="game-card">
+        <h2>🎯 Airdrop</h2>
+        <p>Current pool: {{ airdrop_pool }} coins</p>
+        <div class="d-grid">
+            <a href="{{ url_for('airdrop') }}" class="btn btn-game">
+                🪂 Check Airdrops
+            </a>
         </div>
     </div>
 </div>

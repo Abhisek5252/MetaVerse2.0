@@ -1,43 +1,116 @@
+/* Base styles */
+:root {
+  --theme-primary: #FF6B6B;
+  --theme-secondary: #4ECDC4;
+  --theme-accent: #45B7D1;
+  --theme-background: #1a1b2e;
+}
+
+body {
+  background-color: var(--theme-background);
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Hero section */
+.hero-section {
+  position: relative;
+  height: 400px;
+  background: url('/static/images/metaverse-bg.webp') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(26,27,46,1) 0%, rgba(26,27,46,0.7) 100%);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Game container styles */
 .game-container {
-  background-color: var(--bs-dark);
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
 }
 
+/* Canvas styles */
 canvas {
-  background-color: var(--bs-dark);
+  background-color: var(--theme-background);
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  display: block;
 }
 
-.btn-spin {
-  background-color: var(--bs-primary);
+/* Button styles */
+.btn-game {
+  background-color: var(--theme-primary);
   color: white;
   font-size: 1.2rem;
   padding: 12px 24px;
   border-radius: 25px;
   transition: all 0.3s ease;
+  border: none;
 }
 
-.btn-spin:hover {
+.btn-game:hover {
   transform: scale(1.05);
+  background-color: var(--theme-accent);
 }
 
-.btn-spin:disabled {
-  background-color: var(--bs-secondary);
+.btn-game:disabled {
+  background-color: #4a4a5a;
   transform: none;
 }
 
-.result-message {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 20px;
-  text-align: center;
+/* Card styles */
+.game-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.game-card h2 {
+  color: var(--theme-accent);
+  margin-bottom: 1rem;
+}
+
+/* Score display */
 .score-display {
   font-size: 1.8rem;
-  color: var(--bs-warning);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: var(--theme-primary);
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* Section spacing */
+.section {
+  margin-bottom: 3rem;
+}
+
+/* Grid layout */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
 }
