@@ -25,21 +25,37 @@
         <div class="daily-rewards mt-4">
             <h3>🎁 Daily Login Rewards</h3>
             <div class="rewards-grid">
-                <div class="reward-day {% if user.consecutive_days and user.consecutive_days >= 1 %}active{% endif %}">
+                <div class="reward-day {% if user.consecutive_days >= 1 %}active{% endif %}">
                     <span class="day">Day 1</span>
                     <span class="amount">500</span>
                 </div>
-                <div class="reward-day {% if user.consecutive_days and user.consecutive_days >= 2 %}active{% endif %}">
+                <div class="reward-day {% if user.consecutive_days >= 2 %}active{% endif %}">
                     <span class="day">Day 2</span>
                     <span class="amount">1K</span>
                 </div>
-                <div class="reward-day {% if user.consecutive_days and user.consecutive_days >= 3 %}active{% endif %}">
+                <div class="reward-day {% if user.consecutive_days >= 3 %}active{% endif %}">
                     <span class="day">Day 3</span>
                     <span class="amount">2.5K</span>
                 </div>
-                <div class="reward-day {% if user.consecutive_days and user.consecutive_days >= 4 %}active{% endif %}">
+                <div class="reward-day {% if user.consecutive_days >= 4 %}active{% endif %}">
                     <span class="day">Day 4</span>
                     <span class="amount">5K</span>
+                </div>
+                <div class="reward-day {% if user.consecutive_days >= 5 %}active{% endif %}">
+                    <span class="day">Day 5</span>
+                    <span class="amount">15K</span>
+                </div>
+                <div class="reward-day {% if user.consecutive_days >= 6 %}active{% endif %}">
+                    <span class="day">Day 6</span>
+                    <span class="amount">25K</span>
+                </div>
+                <div class="reward-day {% if user.consecutive_days >= 7 %}active{% endif %}">
+                    <span class="day">Day 7</span>
+                    <span class="amount">100K</span>
+                </div>
+                <div class="reward-day {% if user.consecutive_days >= 8 %}active{% endif %}">
+                    <span class="day">Day 8</span>
+                    <span class="amount">500K</span>
                 </div>
             </div>
 
@@ -98,40 +114,5 @@
             </a>
         </div>
     </div>
-
-    <footer class="section mt-5">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="game-card h-100">
-                    <h3>🎯 Quick Links</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="{{ url_for('game') }}" class="text-decoration-none">Spin Wheel</a></li>
-                        <li><a href="{{ url_for('coinrain') }}" class="text-decoration-none">Coin Rain</a></li>
-                        <li><a href="{{ url_for('wallet') }}" class="text-decoration-none">My Wallet</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="game-card h-100">
-                    <h3>💎 Features</h3>
-                    <ul class="list-unstyled">
-                        <li>Daily Rewards</li>
-                        <li>Mini Games</li>
-                        <li>Airdrops</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="game-card h-100">
-                    <h3>🌟 Community</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="{{ url_for('leaderboard') }}" class="text-decoration-none">Leaderboard</a></li>
-                        <li>Daily Challenges</li>
-                        <li>Special Events</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 {% endblock %}

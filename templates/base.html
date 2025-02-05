@@ -11,30 +11,30 @@
     <!-- Splash Screen -->
     <div class="splash-screen">
         <div class="splash-content">
-            <h1 class="splash-title">Welcome to MetaVerse</h1>
-            <p class="lead">Play, Earn, and Compete in our Virtual Universe</p>
+            <h1 class="splash-title text-uppercase fw-bolder">Welcome to MetaVerse</h1>
+            <p class="lead fw-bold">Play, Earn, and Compete in our Virtual Universe</p>
         </div>
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('index') }}">🎮 MetaVerse</a>
+            <a class="navbar-brand fw-bolder" href="{{ url_for('index') }}">🎮 MetaVerse</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('game') }}">🎡 Spin Wheel</a>
+                        <a class="nav-link fw-bold" href="{{ url_for('game') }}">🎡 Spin Wheel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('coinrain') }}">🌧️ Coin Rain</a>
+                        <a class="nav-link fw-bold" href="{{ url_for('coinrain') }}">🌧️ Coin Rain</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('wallet') }}">💰 Wallet</a>
+                        <a class="nav-link fw-bold" href="{{ url_for('wallet') }}">💰 Wallet</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('leaderboard') }}">🏆 Leaderboard</a>
+                        <a class="nav-link fw-bold" href="{{ url_for('leaderboard') }}">🏆 Leaderboard</a>
                     </li>
                 </ul>
             </div>
