@@ -8,12 +8,15 @@
   --theme-neon-glow: 0 0 10px #00ff9d;
   --theme-cyberpunk-pink: #ff00ff;
   --theme-cyberpunk-blue: #00ffff;
+  --theme-card-bg: rgba(255, 255, 255, 0.05);
+  --theme-border: rgba(69, 183, 209, 0.2);
 }
 
 body {
   background-color: var(--theme-background);
   color: #ffffff;
   min-height: 100vh;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 /* Splash screen with enhanced effects */
@@ -95,7 +98,7 @@ body {
   100% { opacity: 0; visibility: hidden; }
 }
 
-/* Hero section */
+/* Hero section with background image */
 .hero-section {
   position: relative;
   height: 400px;
@@ -146,6 +149,187 @@ canvas {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
   display: block;
+}
+
+/* Game card styles */
+.game-card {
+  background: var(--theme-card-bg);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--theme-border);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.game-card:hover {
+  border-color: var(--theme-neon);
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+}
+
+/* Daily rewards section */
+.daily-rewards {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.reward-day {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid var(--theme-border);
+  transition: all 0.3s ease;
+}
+
+.reward-day.active {
+  background: rgba(0, 255, 157, 0.1);
+  border-color: var(--theme-neon);
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.3);
+}
+
+.reward-day .day {
+  display: block;
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.reward-day .amount {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--theme-neon);
+}
+
+/* Tasks list */
+.tasks-list {
+  margin-top: 2rem;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--theme-border);
+  transition: all 0.3s ease;
+}
+
+.task-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--theme-neon);
+}
+
+.task-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.task-icon {
+  font-size: 1.5rem;
+}
+
+.task-name {
+  font-weight: 500;
+}
+
+.task-reward {
+  color: var(--theme-neon);
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn-claim {
+  background: linear-gradient(45deg, var(--theme-cyberpunk-pink), var(--theme-cyberpunk-blue));
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-claim:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+  color: white;
+}
+
+.btn-task {
+  background: var(--theme-accent);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-task:hover {
+  background: var(--theme-secondary);
+  transform: scale(1.05);
+  color: white;
+}
+
+/* User stats */
+.user-coins {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--theme-border);
+}
+
+/* Timer */
+.next-reward-timer {
+  text-align: center;
+  color: #888;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Airdrop section */
+.airdrop-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.btn-special {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-special:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(78, 205, 196, 0.4);
+  color: white;
 }
 
 /* Button styles */

@@ -94,12 +94,27 @@ def leaderboard():
 def claim_daily():
     user = get_or_create_user()
     if can_claim_daily(user):
-        amount = 100  # Fixed daily reward amount
+        amount = 100  # Base reward amount
+
+        # Calculate reward based on consecutive days
+        if user.consecutive_days is None:
+            user.consecutive_days = 1
+        else:
+            user.consecutive_days += 1
+
+        # Calculate reward based on streak
+        if user.consecutive_days == 2:
+            amount = 1000  # 1K
+        elif user.consecutive_days == 3:
+            amount = 2500  # 2.5K
+        elif user.consecutive_days >= 4:
+            amount = 5000  # 5K
+
         claim = DailyClaim(user_id=user.id, amount=amount)
         user.coins += amount
         db.session.add(claim)
         db.session.commit()
-        flash('🎉 You claimed 100 Metarush Coins!', 'success')
+        flash(f'🎉 You claimed {amount} Metarush Coins!', 'success')
     else:
         flash('⏰ Come back tomorrow for your next reward!', 'error')
     return redirect(url_for('index'))
