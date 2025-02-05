@@ -4,12 +4,42 @@
   --theme-secondary: #4ECDC4;
   --theme-accent: #45B7D1;
   --theme-background: #1a1b2e;
+  --theme-neon: #00ff9d;
+  --theme-neon-glow: 0 0 10px #00ff9d;
 }
 
 body {
   background-color: var(--theme-background);
   color: #ffffff;
   min-height: 100vh;
+}
+
+/* Splash screen */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/static/images/metaverse-bg.webp') center/cover;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeOut 2s ease-in-out forwards;
+  animation-delay: 2s;
+}
+
+.splash-content {
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 20px rgba(0, 255, 157, 0.8);
+}
+
+.splash-title {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  animation: glowText 2s infinite;
 }
 
 /* Hero section */
@@ -41,6 +71,11 @@ body {
   z-index: 1;
 }
 
+.hero-content h1 {
+  animation: glowText 2s infinite;
+  text-shadow: 0 0 10px var(--theme-neon);
+}
+
 /* Game container styles */
 .game-container {
   background-color: rgba(255, 255, 255, 0.05);
@@ -48,6 +83,7 @@ body {
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
+  border: 1px solid rgba(69, 183, 209, 0.1);
 }
 
 /* Canvas styles */
@@ -68,11 +104,14 @@ canvas {
   border-radius: 25px;
   transition: all 0.3s ease;
   border: none;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-game:hover {
   transform: scale(1.05);
   background-color: var(--theme-accent);
+  box-shadow: 0 0 20px rgba(69, 183, 209, 0.4);
 }
 
 .btn-game:disabled {
@@ -87,11 +126,18 @@ canvas {
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
-.game-card h2 {
+.game-card:hover {
+  border-color: var(--theme-neon);
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
+}
+
+.game-card h2, .game-card h3 {
   color: var(--theme-accent);
   margin-bottom: 1rem;
+  text-shadow: 0 0 5px rgba(69, 183, 209, 0.5);
 }
 
 /* Score display */
@@ -105,6 +151,25 @@ canvas {
 /* Section spacing */
 .section {
   margin-bottom: 3rem;
+}
+
+/* Footer styles */
+footer.section {
+  background-color: rgba(26, 27, 46, 0.8);
+  padding: 3rem 0;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(69, 183, 209, 0.2);
+}
+
+/* Animations */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes glowText {
+  0%, 100% { text-shadow: 0 0 10px var(--theme-neon); }
+  50% { text-shadow: 0 0 20px var(--theme-neon), 0 0 30px var(--theme-neon); }
 }
 
 /* Grid layout */
