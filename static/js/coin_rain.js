@@ -11,7 +11,6 @@ class CoinRain {
     };
     this.score = 0;
     this.isRunning = false;
-    this.particles = []; // Add particle effects
 
     // Improved touch and mouse handling
     this.canvas.addEventListener('mousemove', (e) => {
@@ -40,38 +39,21 @@ class CoinRain {
     };
   }
 
-  createParticle(x, y, color) {
-    return {
-      x,
-      y,
-      color,
-      speed: Math.random() * 4 - 2,
-      vy: -Math.random() * 4 - 2,
-      size: Math.random() * 4 + 2,
-      life: 1
-    };
-  }
-
   drawCoin(coin) {
     this.ctx.save();
     this.ctx.translate(coin.x + coin.size/2, coin.y + coin.size/2);
     this.ctx.rotate(coin.rotation);
 
-    // Draw coin with gradient
-    const gradient = this.ctx.createRadialGradient(0, 0, 0, 0, 0, coin.size/2);
-    gradient.addColorStop(0, '#FFD700');
-    gradient.addColorStop(1, '#DAA520');
-
     this.ctx.beginPath();
     this.ctx.arc(0, 0, coin.size/2, 0, Math.PI * 2);
-    this.ctx.fillStyle = gradient;
+    this.ctx.fillStyle = '#FFD700';
     this.ctx.fill();
-    this.ctx.strokeStyle = '#B8860B';
+    this.ctx.strokeStyle = '#DAA520';
     this.ctx.lineWidth = 2;
     this.ctx.stroke();
 
     // Draw $ symbol
-    this.ctx.fillStyle = '#B8860B';
+    this.ctx.fillStyle = '#DAA520';
     this.ctx.font = 'bold 20px Arial';
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
@@ -81,19 +63,9 @@ class CoinRain {
   }
 
   drawBasket() {
-    // Draw basket with gradient
-    const gradient = this.ctx.createLinearGradient(
-      this.basket.x,
-      this.basket.y,
-      this.basket.x,
-      this.basket.y + this.basket.height
-    );
-    gradient.addColorStop(0, '#A0522D');
-    gradient.addColorStop(1, '#8B4513');
-
-    this.ctx.fillStyle = gradient;
+    this.ctx.fillStyle = '#8B4513';
     this.ctx.strokeStyle = '#654321';
-    this.ctx.lineWidth = 3;
+    this.ctx.lineWidth = 2;
 
     // Draw basket shape
     this.ctx.beginPath();
@@ -106,35 +78,11 @@ class CoinRain {
     this.ctx.stroke();
   }
 
-  drawParticles() {
-    this.particles.forEach((particle, index) => {
-      particle.x += particle.speed;
-      particle.y += particle.vy;
-      particle.vy += 0.1;
-      particle.life -= 0.02;
-
-      if (particle.life <= 0) {
-        this.particles.splice(index, 1);
-        return;
-      }
-
-      this.ctx.globalAlpha = particle.life;
-      this.ctx.fillStyle = particle.color;
-      this.ctx.beginPath();
-      this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-      this.ctx.fill();
-      this.ctx.globalAlpha = 1;
-    });
-  }
-
   drawScore() {
     this.ctx.fillStyle = '#ffffff';
-    this.ctx.font = 'bold 24px Arial';
+    this.ctx.font = '24px Arial';
     this.ctx.textAlign = 'left';
-    this.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-    this.ctx.shadowBlur = 4;
     this.ctx.fillText(`Score: ${this.score}`, 10, 30);
-    this.ctx.shadowBlur = 0;
   }
 
   update() {
@@ -151,14 +99,6 @@ class CoinRain {
           coinCenterY < this.basket.y + this.basket.height &&
           coinCenterX > this.basket.x && 
           coinCenterX < this.basket.x + this.basket.width) {
-        // Create particle effect on collection
-        for (let i = 0; i < 8; i++) {
-          this.particles.push(this.createParticle(
-            coinCenterX,
-            coinCenterY,
-            '#FFD700'
-          ));
-        }
         this.coins.splice(index, 1);
         this.score++;
         document.getElementById('score').textContent = `Score: ${this.score}`;
@@ -181,7 +121,6 @@ class CoinRain {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.coins.forEach(coin => this.drawCoin(coin));
     this.drawBasket();
-    this.drawParticles();
     this.drawScore();
   }
 
@@ -206,7 +145,6 @@ class CoinRain {
   start() {
     this.score = 0;
     this.coins = [];
-    this.particles = [];
     this.isRunning = true;
     this.startTime = Date.now();
     this.gameLoop();
